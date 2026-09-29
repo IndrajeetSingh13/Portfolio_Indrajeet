@@ -1,0 +1,13 @@
+# VS Code extensions
+.vscode/extensions/
+
+#Dependencies
+node_modules/
+
+# Environment variables
+.env 
+.env.*
+
+#Buils files
+dist/
+build/

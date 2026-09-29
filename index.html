@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Indrajeet Singh – Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F7;--surface:#FFFFFF;--ink:#132238;--muted:#55657A;--line:#D5DDE5;--accent:#0B6E6E;--accent-ink:#FFFFFF;--soft:#DCEFEE;
+  --display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;--body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1722;--surface:#152233;--ink:#E8EEF4;--muted:#9AABBD;--line:#263A50;--accent:#4FD1C5;--accent-ink:#06211F;--soft:#12333A}}
+:root[data-theme="dark"]{--bg:#0E1722;--surface:#152233;--ink:#E8EEF4;--muted:#9AABBD;--line:#263A50;--accent:#4FD1C5;--accent-ink:#06211F;--soft:#12333A}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+section{padding:5rem 0}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:2rem}
+p{margin:0 0 1rem;max-width:64ch}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:800 1.25rem var(--display);text-decoration:none}
+nav ul{display:flex;gap:1.75rem;list-style:none;margin:0;padding:0;align-items:center}
+nav a{text-decoration:none;font-weight:500;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.icon-btn{background:none;border:1px solid var(--line);color:var(--ink);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.05rem}
+.menu-btn{display:none}
+@media (max-width:760px){
+  .menu-btn{display:inline-grid;place-items:center}
+  nav{position:absolute;left:0;right:0;top:64px;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;align-items:flex-start;gap:0;padding:.5rem 1.25rem 1rem}
+  nav li{width:100%}
+  nav a{display:block;padding:.75rem 0}
+}
+
+/* hero */
+#home{padding:clamp(3rem,9vw,7rem) 0 4rem}
+.status{display:inline-flex;gap:.5rem;align-items:center;background:var(--soft);color:var(--ink);padding:.4rem .9rem;border-radius:99px;font-size:.92rem;font-weight:500;margin-bottom:1.5rem}
+.status i{width:.6rem;height:.6rem;border-radius:50%;background:var(--accent);display:block;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1{font-size:clamp(2.8rem,9.5vw,7.2rem);font-weight:800;max-width:14ch}
+h1 span{color:var(--muted);font-weight:500}
+.lead{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--muted);margin:1.75rem 0 2.25rem;max-width:52ch}
+.btns{display:flex;flex-wrap:wrap;gap:.9rem}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:10px;font:600 1rem var(--body);text-decoration:none;border:2px solid var(--accent);cursor:pointer;transition:transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--soft)}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1.5fr;gap:3rem;align-items:start}
+.portrait{aspect-ratio:4/5;background:linear-gradient(160deg,var(--soft),var(--surface));border:1px solid var(--line);border-radius:18px;display:grid;place-items:center;font:800 5rem var(--display);color:var(--accent)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.facts div{border-top:2px solid var(--accent);padding-top:.6rem}
+.facts b{display:block;font:800 1.45rem var(--display)}
+.facts span{color:var(--muted);font-size:.92rem}
+@media (max-width:860px){.about{grid-template-columns:1fr}.portrait{max-width:280px;aspect-ratio:1}}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.group{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.5rem}
+.group h3{font-size:1.2rem;margin-bottom:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:0;padding:0}
+.chips li{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.3rem .7rem;font-size:.95rem}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{height:170px;display:grid;place-items:center;font:800 2.6rem var(--display);color:var(--accent-ink);background:var(--accent)}
+.card:nth-child(2) .thumb{background:#3B5BDB;color:#fff}
+.card:nth-child(3) .thumb{background:#C2410C;color:#fff}
+.card .body{padding:1.4rem;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:1.35rem;margin-bottom:.6rem}
+.card p{color:var(--muted);font-size:1rem}
+.card .chips{margin:.25rem 0 1.25rem}
+.links{margin-top:auto;display:flex;gap:1.25rem;font-weight:600}
+.links a{color:var(--accent)}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1.3fr;gap:3rem}
+.contact address{font-style:normal;color:var(--muted)}
+.contact address a{color:var(--ink)}
+form{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.75rem}
+.field{margin-bottom:1.25rem}
+label{display:block;font-weight:600;margin-bottom:.4rem}
+input,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:10px;padding:.7rem .9rem}
+textarea{min-height:140px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+.field.bad input,.field.bad textarea{border-color:#D6336C}
+.err{color:#D6336C;font-size:.9rem;min-height:1.2rem;margin-top:.3rem}
+:root[data-theme="dark"] .err,:root[data-theme="dark"] .field.bad input{color:#FF7AA8}
+.count{float:right;font-weight:400;color:var(--muted);font-size:.85rem}
+.ok{display:none;background:var(--soft);border-radius:10px;padding:1.25rem;margin-top:1rem}
+.ok.show{display:block}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+@media (max-width:480px){section{padding:3.5rem 0}.facts{grid-template-columns:1fr 1fr}}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home">Indrajeet Singh</a>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div style="display:flex;gap:.5rem">
+      <button class="icon-btn" id="theme" aria-label="Switch colour theme">◐</button>
+      <button class="icon-btn menu-btn" id="menu" aria-label="Open menu" aria-expanded="false" aria-controls="nav">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="home">
+  <div class="wrap">
+    <p class="status"><i></i> Open to internships, freelance and full-time roles</p>
+    <h1>I build web apps, front to back. <span>Full stack developer.</span></h1>
+    <p class="lead">Hi, I'm Indrajeet, a full stack developer who turns ideas into fast, accessible, responsive products, from the interface to the database.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">See my work</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="portrait" role="img" aria-label="Portrait placeholder">IS</div>
+    <div>
+      <h2>About me</h2>
+      <p>I'm a full stack developer with one year of hands-on experience building web apps, from responsive interfaces to APIs and databases. I care about clean code, readable interfaces and pages that load quickly on any phone.</p>
+      <p>I'm still growing fast: I learn by shipping real projects, reading other people's code, and picking up new tools whenever a project needs them. I'm looking for a team where I can keep learning while contributing from day one.</p>
+      <div class="facts">
+        <div><b>1</b><span>Year of experience</span></div>
+        <div><b>Full stack</b><span>Front end to database</span></div>
+        <div><b>3</b><span>Featured projects</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills and tools</h2>
+    <div class="skills">
+      <div class="group"><h3>Languages</h3><ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>TypeScript</li><li>Python</li></ul></div>
+      <div class="group"><h3>Frameworks</h3><ul class="chips"><li>React</li><li>Next.js</li><li>Node.js</li><li>Tailwind CSS</li><li>Express</li></ul></div>
+      <div class="group"><h3>Design</h3><ul class="chips"><li>Figma</li><li>Responsive layout</li><li>Accessibility</li><li>Design systems</li></ul></div>
+      <div class="group"><h3>Workflow</h3><ul class="chips"><li>Git and GitHub</li><li>Vercel</li><li>Netlify</li><li>Jest</li><li>Lighthouse</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Selected projects</h2>
+    <div class="projects">
+      <article class="card">
+        <div class="thumb" aria-hidden="true">Cartly</div>
+        <div class="body">
+          <h3>Cartly storefront</h3>
+          <p>A fast online shop for a local bakery, with cart, search and UPI checkout. Page load dropped from 5s to under 1.5s.</p>
+          <ul class="chips"><li>Next.js</li><li>Stripe</li><li>Tailwind</li></ul>
+          <div class="links"><a href="#">Live demo</a><a href="#">Source code</a></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb" aria-hidden="true">Tasklane</div>
+        <div class="body">
+          <h3>Tasklane board</h3>
+          <p>A drag-and-drop task board for small teams, with offline support and keyboard shortcuts throughout.</p>
+          <ul class="chips"><li>React</li><li>Node.js</li><li>MongoDB</li></ul>
+          <div class="links"><a href="#">Live demo</a><a href="#">Source code</a></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb" aria-hidden="true">Weatherly</div>
+        <div class="body">
+          <h3>Weatherly</h3>
+          <p>A clean forecast app that shows the next 7 days at a glance and adapts its layout from phones to wide screens.</p>
+          <ul class="chips"><li>JavaScript</li><li>REST API</li><li>CSS Grid</li></ul>
+          <div class="links"><a href="#">Live demo</a><a href="#">Source code</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div>
+      <h2>Let's talk</h2>
+      <p>Have a project in mind or want to say hello? Fill in the form and I'll reply within two working days.</p>
+      <address>
+        <a href="mailto:indrajeetsinghofficial13@gmail.com">indrajeetsinghofficial13@gmail.com</a><br>
+        <a href="https://github.com/IndrajeetSingh13" target="_blank" rel="noopener">github.com/IndrajeetSingh13</a><br>
+        <a href="https://www.linkedin.com/in/indrajeet-singh-76b68a349" target="_blank" rel="noopener">linkedin.com/in/indrajeet-singh-76b68a349</a>
+      </address>
+    </div>
+    <div>
+      <form id="form" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" aria-describedby="name-err">
+          <div class="err" id="name-err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-err">
+          <div class="err" id="email-err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" aria-describedby="subject-err">
+          <div class="err" id="subject-err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="message">Message <span class="count" id="count">0 / 500</span></label>
+          <textarea id="message" name="message" maxlength="500" aria-describedby="message-err"></textarea>
+          <div class="err" id="message-err" aria-live="polite"></div>
+        </div>
+        <button class="btn primary" type="submit">Send message</button>
+      </form>
+      <div class="ok" id="ok" role="status" tabindex="-1">
+        <strong>Thanks, your message is ready.</strong>
+        <p style="margin:.4rem 0 .8rem">This demo form has no server, so tap below to send it from your email app.</p>
+        <a class="btn primary" id="mail" href="#">Open email app</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Indrajeet Singh. Built with plain HTML, CSS and JavaScript.</div></footer>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  $('yr').textContent=new Date().getFullYear();
+
+  // mobile menu
+  var nav=$('nav'),menu=$('menu');
+  menu.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded',open);
+  });
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}});
+
+  // theme toggle
+  var root=document.documentElement;
+  try{var saved=localStorage.getItem('theme');if(saved)root.setAttribute('data-theme',saved)}catch(e){}
+  $('theme').addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')?root.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+    var next=dark?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next)}catch(e){}
+  });
+
+  // form validation
+  var rules={
+    name:function(v){if(!v)return'Enter your name.';if(v.length<2)return'Name must be at least 2 characters.';if(!/^[\p{L}][\p{L} .'-]*$/u.test(v))return'Use letters only in your name.';return''},
+    email:function(v){if(!v)return'Enter your email address.';if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v))return'Enter a valid email, like name@example.com.';return''},
+    subject:function(v){if(!v)return'Enter a subject.';if(v.length<3)return'Subject must be at least 3 characters.';return''},
+    message:function(v){if(!v)return'Write a message.';if(v.length<20)return'Message must be at least 20 characters ('+(20-v.length)+' more).';return''}
+  };
+  function check(id){
+    var el=$(id),msg=rules[id](el.value.trim());
+    $(id+'-err').textContent=msg;
+    el.parentNode.classList.toggle('bad',!!msg);
+    el.setAttribute('aria-invalid',msg?'true':'false');
+    return !msg;
+  }
+  Object.keys(rules).forEach(function(id){
+    $(id).addEventListener('blur',function(){check(id)});
+    $(id).addEventListener('input',function(){if($(id).parentNode.classList.contains('bad'))check(id)});
+  });
+  $('message').addEventListener('input',function(){$('count').textContent=this.value.length+' / 500'});
+
+  $('form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var first=null;
+    Object.keys(rules).forEach(function(id){if(!check(id)&&!first)first=id});
+    if(first){$(first).focus();return}
+    var body='From: '+$('name').value.trim()+' ('+$('email').value.trim()+')\n\n'+$('message').value.trim();
+    $('mail').href='mailto:indrajeetsinghofficial13@gmail.com?subject='+encodeURIComponent($('subject').value.trim())+'&body='+encodeURIComponent(body);
+    this.reset();$('count').textContent='0 / 500';
+    $('ok').classList.add('show');$('ok').focus();
+  });
+})();
+</script>
+</body>
+</html>
